@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="co.mobilemaker.chooseyourownadventure" >
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".AlleyFragmentActivity"
+            android:label="Alley activity" />
+        <activity android:name=".RoomFragmentActivity"
+            android:label="Room activity" />
+        <activity android:name=".WinningFragmentActivity"
+            android:label="Winning activity" />
+        <activity android:name=".LosingFragmentActivity"
+            android:label="Losing activity" />
+    </application>
+
+</manifest>

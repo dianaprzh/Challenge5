@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">ChooseYourOwnAdventure</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="textView_title">Adventure!</string>
+    <string name="button_startTraveling">Start traveling</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="textView_alleyMsg">You have ventured down a dark alley, where would you like to go next . . .</string>
+    <string name="button_goLeft">Go left</string>
+    <string name="button_continue">Continue</string>
+    <string name="button_goRight">Go Right</string>
+    <string name="textView_RooMsg">You have entered a room with two doors</string>
+    <string name="button_door1">Enter Door 1</string>
+    <string name="button_door2">Enter Door 2</string>
+    <string name="textView_winMsg">You\'ve reached the gold!</string>
+    <string name="textView_loseMsg">You\'ve fallen into the pit of despair</string>
+
+</resources>
