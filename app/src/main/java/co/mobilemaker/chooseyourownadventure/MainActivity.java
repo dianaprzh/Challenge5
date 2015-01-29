@@ -25,8 +25,8 @@ public class MainActivity extends ActionBarActivity {
         mStartTravelingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent alleyIntent = new Intent(MainActivity.this, AlleyFragmentActivity.class);
-                Intent roomIntent = new Intent(MainActivity.this, RoomFragmentActivity.class);
+                Intent alleyIntent = new Intent(MainActivity.this, AlleyActivity.class);
+                Intent roomIntent = new Intent(MainActivity.this, RoomActivity.class);
                 Random random = new Random();
                 int randNum = random.nextInt(11);
                 if(randNum > 5 )

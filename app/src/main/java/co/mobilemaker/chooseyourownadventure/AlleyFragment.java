@@ -2,13 +2,16 @@ package co.mobilemaker.chooseyourownadventure;
 
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Button;
+
+import java.util.Random;
 
 
 /**
@@ -28,7 +31,69 @@ public class AlleyFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         Log.d(LOG_TAG, "Fragment view alley being created");
-        return inflater.inflate(R.layout.fragment_alley, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_alley, container, false);
+        prepareGoLeftButton(rootView);
+        prepareContinueButton(rootView);
+        prepareGoRightButton(rootView);
+        return rootView;
+    }
+
+    private void prepareContinueButton(final View rootView) {
+        Button mContinueButton = (Button) rootView.findViewById(R.id.button_continue);
+        mContinueButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent alleyIntent = new Intent(rootView.getContext(), AlleyActivity.class);
+                Intent roomIntent = new Intent(rootView.getContext(), RoomActivity.class);
+                Intent losingIntent = new Intent(rootView.getContext(),LosingActivity.class);
+                Random random = new Random();
+                int randNum = random.nextInt(11);
+                if(randNum <= 2 && randNum >=0)
+                    startActivity(losingIntent);
+                else if(randNum > 4)
+                    startActivity(roomIntent);
+                else
+                    startActivity(alleyIntent);
+            }
+        });
+    }
+
+    private void prepareGoLeftButton(final View rootView) {
+        Button mGoLeftButton = (Button) rootView.findViewById(R.id.button_goLeft);
+        mGoLeftButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Intent alleyIntent = new Intent(rootView.getContext(), AlleyActivity.class);
+                Intent roomIntent = new Intent(rootView.getContext(), RoomActivity.class);
+                Intent winningIntent = new Intent(rootView.getContext(), WinningActivity.class);
+                Random random = new Random();
+                int randNum = random.nextInt(11);
+                if(randNum <= 2 && randNum >=0)
+                    startActivity(winningIntent);
+                else if(randNum > 4)
+                    startActivity(roomIntent);
+                else
+                    startActivity(alleyIntent);
+            }
+        });
+    }
+
+    private void prepareGoRightButton(final View rootView) {
+        Button mGoRightButton = (Button)rootView.findViewById(R.id.button_goRight);
+
+        mGoRightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent alleyIntent = new Intent(rootView.getContext(), AlleyActivity.class);
+                Intent roomIntent = new Intent(rootView.getContext(), RoomActivity.class);
+                Random random = new Random();
+                int randNum = random.nextInt(11);
+                if(randNum > 5 )
+                    startActivity(alleyIntent);
+                else
+                    startActivity(roomIntent);
+            }
+        });
     }
 
     @Override

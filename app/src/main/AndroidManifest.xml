@@ -16,13 +16,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AlleyFragmentActivity"
+        <activity android:name=".AlleyActivity"
             android:label="Alley activity" />
-        <activity android:name=".RoomFragmentActivity"
+        <activity android:name=".RoomActivity"
             android:label="Room activity" />
-        <activity android:name=".WinningFragmentActivity"
+        <activity android:name=".WinningActivity"
             android:label="Winning activity" />
-        <activity android:name=".LosingFragmentActivity"
+        <activity android:name=".LosingActivity"
             android:label="Losing activity" />
     </application>
 

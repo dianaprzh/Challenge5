@@ -7,26 +7,26 @@ import android.util.Log;
 /**
  * Created by diany_000.
  */
-public class LosingFragmentActivity extends Activity{
+public class WinningActivity extends Activity {
 
-    private final static String LOG_TAG = LosingFragmentActivity.class.getSimpleName();
+    private final static String LOG_TAG = WinningActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_losing);
-        Log.d(LOG_TAG, "Activity losing created.");
+        setContentView(R.layout.activity_winning);
+        Log.d(LOG_TAG, "Activity winning created.");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.d(LOG_TAG, "Losing Activity paused");
+        Log.d(LOG_TAG, "Winning Activity paused");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.d(LOG_TAG, "Losing Activity resumed");
+        Log.d(LOG_TAG, "Winning Activity resumed");
     }
 }
