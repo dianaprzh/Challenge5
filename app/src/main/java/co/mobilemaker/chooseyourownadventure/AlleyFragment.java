@@ -43,17 +43,15 @@ public class AlleyFragment extends Fragment {
         mContinueButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent alleyIntent = new Intent(rootView.getContext(), AlleyActivity.class);
-                Intent roomIntent = new Intent(rootView.getContext(), RoomActivity.class);
-                Intent losingIntent = new Intent(rootView.getContext(),LosingActivity.class);
+                MainActivity mainActivity = (MainActivity)getActivity();
                 Random random = new Random();
                 int randNum = random.nextInt(11);
                 if(randNum <= 2 && randNum >=0)
-                    startActivity(losingIntent);
+                    mainActivity.goToLosing(new LosingFragment());
                 else if(randNum > 4)
-                    startActivity(roomIntent);
+                    mainActivity.goToRoom(new RoomFragment());
                 else
-                    startActivity(alleyIntent);
+                    mainActivity.goToAlley(new AlleyFragment());
             }
         });
     }
@@ -63,35 +61,31 @@ public class AlleyFragment extends Fragment {
         mGoLeftButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                Intent alleyIntent = new Intent(rootView.getContext(), AlleyActivity.class);
-                Intent roomIntent = new Intent(rootView.getContext(), RoomActivity.class);
-                Intent winningIntent = new Intent(rootView.getContext(), WinningActivity.class);
+                MainActivity mainActivity = (MainActivity)getActivity();
                 Random random = new Random();
                 int randNum = random.nextInt(11);
                 if(randNum <= 2 && randNum >=0)
-                    startActivity(winningIntent);
+                    mainActivity.goToWinning(new WinningFragment());
                 else if(randNum > 4)
-                    startActivity(roomIntent);
+                    mainActivity.goToRoom(new RoomFragment());
                 else
-                    startActivity(alleyIntent);
+                    mainActivity.goToAlley(new AlleyFragment());
             }
         });
     }
 
     private void prepareGoRightButton(final View rootView) {
         Button mGoRightButton = (Button)rootView.findViewById(R.id.button_goRight);
-
         mGoRightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent alleyIntent = new Intent(rootView.getContext(), AlleyActivity.class);
-                Intent roomIntent = new Intent(rootView.getContext(), RoomActivity.class);
+                MainActivity mainActivity = (MainActivity)getActivity();
                 Random random = new Random();
                 int randNum = random.nextInt(11);
                 if(randNum > 5 )
-                    startActivity(alleyIntent);
+                    mainActivity.goToAlley(new AlleyFragment());
                 else
-                    startActivity(roomIntent);
+                    mainActivity.goToRoom(new RoomFragment());
             }
         });
     }

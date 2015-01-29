@@ -1,5 +1,8 @@
 package co.mobilemaker.chooseyourownadventure;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
@@ -11,32 +14,23 @@ import android.widget.Button;
 import java.util.Random;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity{
+
+    private final static String MAIN = "MAIN";
+    private final static String ALLEY = "ALLEY";
+    private final static String ROOM = "ROOM";
+    private final static String LOSING = "LOSING";
+    private final static String WINNING = "WINNING";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        prepareButton();
+        setContentView(R.layout.activity_screen);
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction()
+                .add(R.id.screen, new MainFragment()).addToBackStack(MAIN)
+                .commit();
     }
-
-    private void prepareButton() {
-        Button mStartTravelingButton = (Button)findViewById(R.id.button_startTraveling);
-        mStartTravelingButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent alleyIntent = new Intent(MainActivity.this, AlleyActivity.class);
-                Intent roomIntent = new Intent(MainActivity.this, RoomActivity.class);
-                Random random = new Random();
-                int randNum = random.nextInt(11);
-                if(randNum > 5 )
-                    startActivity(alleyIntent);
-                else
-                    startActivity(roomIntent);
-            }
-        });
-    }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -58,5 +52,37 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void goToAlley(AlleyFragment alleyFragment){
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentManager.popBackStack();
+        fragmentTransaction.replace(R.id.screen, alleyFragment, ALLEY).addToBackStack(ALLEY);
+        fragmentTransaction.commit();
+    }
+
+    public void goToRoom(RoomFragment roomFragment){
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentManager.popBackStack();
+        fragmentTransaction.replace(R.id.screen, roomFragment, ROOM).addToBackStack(ROOM);
+        fragmentTransaction.commit();
+    }
+
+    public void goToLosing(LosingFragment losingFragment){
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentManager.popBackStack();
+        fragmentTransaction.replace(R.id.screen, losingFragment, LOSING).addToBackStack(LOSING);
+        fragmentTransaction.commit();
+    }
+
+    public void goToWinning(WinningFragment winningFragment){
+        FragmentManager fragmentManager = getFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentManager.popBackStack();
+        fragmentTransaction.replace(R.id.screen, winningFragment, WINNING).addToBackStack(WINNING);
+        fragmentTransaction.commit();
     }
 }

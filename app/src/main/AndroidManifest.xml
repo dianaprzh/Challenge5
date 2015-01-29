@@ -16,14 +16,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AlleyActivity"
-            android:label="Alley activity" />
-        <activity android:name=".RoomActivity"
-            android:label="Room activity" />
-        <activity android:name=".WinningActivity"
-            android:label="Winning activity" />
-        <activity android:name=".LosingActivity"
-            android:label="Losing activity" />
     </application>
 
 </manifest>

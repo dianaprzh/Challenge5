@@ -41,17 +41,15 @@ public class RoomFragment extends Fragment {
         mDoor2Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent alleyIntent = new Intent(viewRoot.getContext(), AlleyActivity.class);
-                Intent roomIntent = new Intent(viewRoot.getContext(), RoomActivity.class);
-                Intent losingIntent = new Intent(viewRoot.getContext(),LosingActivity.class);
+                MainActivity mainActivity = (MainActivity)getActivity();
                 Random random = new Random();
                 int randNum = random.nextInt(11);
                 if(randNum <= 2 && randNum >=0)
-                    startActivity(losingIntent);
+                    mainActivity.goToLosing(new LosingFragment());
                 else if(randNum > 4)
-                    startActivity(roomIntent);
+                    mainActivity.goToRoom(new RoomFragment());
                 else
-                    startActivity(alleyIntent);
+                    mainActivity.goToAlley(new AlleyFragment());
             }
         });
     }
@@ -61,17 +59,15 @@ public class RoomFragment extends Fragment {
         mDoor1Button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent alleyIntent = new Intent(viewRoot.getContext(), AlleyActivity.class);
-                Intent roomIntent = new Intent(viewRoot.getContext(), RoomActivity.class);
-                Intent winningIntent = new Intent(viewRoot.getContext(), WinningActivity.class);
+                MainActivity mainActivity = (MainActivity)getActivity();
                 Random random = new Random();
                 int randNum = random.nextInt(11);
                 if(randNum <= 2 && randNum >=0)
-                    startActivity(winningIntent);
+                    mainActivity.goToWinning(new WinningFragment());
                 else if(randNum > 4)
-                    startActivity(roomIntent);
+                    mainActivity.goToRoom(new RoomFragment());
                 else
-                    startActivity(alleyIntent);
+                    mainActivity.goToAlley(new AlleyFragment());
             }
         });
     }
