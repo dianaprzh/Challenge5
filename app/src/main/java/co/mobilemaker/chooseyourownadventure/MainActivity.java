@@ -4,6 +4,7 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -16,20 +17,34 @@ import java.util.Random;
 
 public class MainActivity extends ActionBarActivity{
 
-    private final static String MAIN = "MAIN";
-    private final static String ALLEY = "ALLEY";
-    private final static String ROOM = "ROOM";
-    private final static String LOSING = "LOSING";
-    private final static String WINNING = "WINNING";
+    public final static String MAIN = "MAIN";
+    public final static String ALLEY = "ALLEY";
+    public final static String ROOM = "ROOM";
+    public final static String LOSING = "LOSING";
+    public final static String WINNING = "WINNING";
+    public final static String EASY = "EASY";
+    public final static String MEDIUM = "MEDIUM";
+    public final static String HARD = "HARD";
+    public final static String DIFFICULTY = "DIFFICULTY";
+    public static final int RESULT_SETTINGS = 1;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_screen);
+        customizeActionBar();
         FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction()
                 .add(R.id.screen, new MainFragment()).addToBackStack(MAIN)
                 .commit();
+    }
+
+    private void customizeActionBar() {
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(R.string.action_bar_title);
+        actionBar.setIcon(R.drawable.ic_launcher);
+        actionBar.setDisplayShowHomeEnabled(true);
     }
 
     @Override
@@ -47,42 +62,14 @@ public class MainActivity extends ActionBarActivity{
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+        switch (id) {
+            case R.id.action_settings:
+                Intent intent = new Intent(this, AppSettingsActivity.class);
+                startActivityForResult(intent, RESULT_SETTINGS);
+                return true;
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    public void goToAlley(AlleyFragment alleyFragment){
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentManager.popBackStack();
-        fragmentTransaction.replace(R.id.screen, alleyFragment, ALLEY).addToBackStack(ALLEY);
-        fragmentTransaction.commit();
-    }
-
-    public void goToRoom(RoomFragment roomFragment){
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentManager.popBackStack();
-        fragmentTransaction.replace(R.id.screen, roomFragment, ROOM).addToBackStack(ROOM);
-        fragmentTransaction.commit();
-    }
-
-    public void goToLosing(LosingFragment losingFragment){
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentManager.popBackStack();
-        fragmentTransaction.replace(R.id.screen, losingFragment, LOSING).addToBackStack(LOSING);
-        fragmentTransaction.commit();
-    }
-
-    public void goToWinning(WinningFragment winningFragment){
-        FragmentManager fragmentManager = getFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentManager.popBackStack();
-        fragmentTransaction.replace(R.id.screen, winningFragment, WINNING).addToBackStack(WINNING);
-        fragmentTransaction.commit();
-    }
 }

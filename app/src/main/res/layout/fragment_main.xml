@@ -19,10 +19,38 @@
         android:textColor="#ffff9267"
         android:textSize="40dp" />
 
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/radioGroup_difficulty">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_button_easy"
+            android:id="@+id/radioButton_easy"
+            android:checked="false" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_button_medium"
+            android:id="@+id/radioButton_medium"
+            android:checked="false" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_button_hard"
+            android:id="@+id/radioButton_hard"
+            android:checked="false" />
+    </RadioGroup>
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_startTraveling"
         android:id="@+id/button_startTraveling"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"/>
 </LinearLayout>
